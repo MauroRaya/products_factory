@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Mauro\\Desktop\\ProductsFactory\\ProductsFactory\\ProductsFactory.csproj": {}
+    "C:\\Users\\Mauro\\Desktop\\ProductsFactory\\ProductsFactory.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Mauro\\Desktop\\ProductsFactory\\ProductsFactory\\ProductsFactory.csproj": {
+    "C:\\Users\\Mauro\\Desktop\\ProductsFactory\\ProductsFactory.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mauro\\Desktop\\ProductsFactory\\ProductsFactory\\ProductsFactory.csproj",
+        "projectUniqueName": "C:\\Users\\Mauro\\Desktop\\ProductsFactory\\ProductsFactory.csproj",
         "projectName": "ProductsFactory",
-        "projectPath": "C:\\Users\\Mauro\\Desktop\\ProductsFactory\\ProductsFactory\\ProductsFactory.csproj",
+        "projectPath": "C:\\Users\\Mauro\\Desktop\\ProductsFactory\\ProductsFactory.csproj",
         "packagesPath": "C:\\Users\\Mauro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mauro\\Desktop\\ProductsFactory\\ProductsFactory\\obj\\",
+        "outputPath": "C:\\Users\\Mauro\\Desktop\\ProductsFactory\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Mauro\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,23 +1,18 @@
 ﻿namespace ProductsFactory {
     internal class Program {
         static void Main(string[] args) {
+            ProductFactory.Register(1, "Chair", () => new Chair());
+            ProductFactory.Register(2, "Sofa", () => new Sofa());
+            ProductFactory.Register(3, "Table", () => new Table());
+
             Console.WriteLine("Choose one of the below:");
-            Console.WriteLine("1. Chair");
-            Console.WriteLine("2. Sofa");
-            Console.WriteLine("3. Table");
+            ProductFactory.DisplayProducts();
 
             if (!int.TryParse(Console.ReadLine(), out int productChoice)) {
                 throw new InvalidOperationException();
             }
 
-            IProductFactory productFactory = productChoice switch {
-                1 => new ChairFactory(),
-                2 => new SofaFactory(),
-                3 => new TableFactory(),
-                _ => throw new InvalidOperationException(),
-            };
-
-            var product = productFactory.CreateProduct();
+            var product = ProductFactory.GetProduct(productChoice);
 
             product.Describe();
             Console.WriteLine(product.GetType());
@@ -37,18 +32,28 @@
             public void Describe() => Console.WriteLine("Just a table doing table things");
         }
 
-        interface IProductFactory {
-            IProduct CreateProduct();
-        }
+        static class ProductFactory {
+            private static Dictionary<int, (string Name, Func<IProduct> Factory)> _products = new();
 
-        class ChairFactory : IProductFactory {
-            public IProduct CreateProduct() => new Chair();
-        }
-        class SofaFactory : IProductFactory {
-            public IProduct CreateProduct() => new Sofa();
-        }
-        class TableFactory : IProductFactory {
-            public IProduct CreateProduct() => new Table();
+            public static void Register(int key, string name, Func<IProduct> factory) {
+                if (_products.ContainsKey(key)) {
+                    throw new Exception();
+                }
+                _products[key] = (name, factory);
+            }
+
+            public static void DisplayProducts() { 
+                foreach (var product in _products) {
+                    Console.WriteLine($"{product.Key} - {product.Value.Name}");
+                }
+            }
+
+            public static IProduct GetProduct(int key) {
+                if (_products.TryGetValue(key, out var tuple)) {
+                    return tuple.Factory();
+                }
+                throw new Exception();
+            }
         }
     }
 }
